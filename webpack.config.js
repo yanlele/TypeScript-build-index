@@ -11,12 +11,12 @@ const fse = require('fs-extra');
 const baseConfig = {
     devtool: 'inline-source-map',
     entry: {
-        vendor: [],
         common: './app/common/Common.ts'
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'js/[name].[chunkhash:5].js'
+        filename: 'js/[name].[chunkhash:5].js',
+        publicPath: '/'
     },
     resolve: {
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
@@ -57,8 +57,7 @@ const baseConfig = {
                         {
                             loader: 'css-loader',
                             options: {
-                                minimize: true,
-                                localIdentName: '[path][name]_[local]_[hash:base64:5]'
+                                // minimize: true,
                             }
                         },
                         {
@@ -89,7 +88,7 @@ const baseConfig = {
                                 options: {
                                     // useRelativePath: true,
                                     // publicPath: '../img',
-                                    outputPath: './dist-ts/img',
+                                    outputPath: 'img',
                                 }
                             }
                         }
@@ -111,9 +110,20 @@ const baseConfig = {
                                 options: {
                                     // useRelativePath: true,
                                     // publicPath: '../fonts',
-                                    outputPath: './dist-ts/fonts',
+                                    outputPath: 'fonts',
                                 }
                             }
+                        }
+                    }
+                ]
+            },
+            {
+                test: /\.html$/,
+                use: [
+                    {
+                        loader: 'html-loader',
+                        options: {
+                            attrs: ['img:src', 'img:data-src']
                         }
                     }
                 ]
@@ -129,7 +139,7 @@ const baseConfig = {
         new CleanWebpack(path.resolve(__dirname, 'dist')),
 
         new webpack.optimize.CommonsChunkPlugin({               // 提取三方生成的代码, 包括模块代码
-            names: ['vendor'],
+            names: [ 'common'],
             minChunks: Infinity
         }),
 
@@ -158,7 +168,10 @@ const generatePage = function ({
                 chunks,
                 template,
                 title,
-                filename: name + '.html'
+                filename: name + '.html',
+                minify: {
+                    collapseWhitespace: false                //祛除空格
+                }
             })
         ]
     }
@@ -178,7 +191,7 @@ appPaths.map(function (item) {
                 [item]: `./app/pages/${item}/index.ts`
             },
             name: item,
-            chunks: [item, 'vendor', 'common'],
+            chunks: [item, 'common'],
             template: fse.pathExistsSync(appItemHtmlTemplate) ? path.resolve(__dirname, 'app', 'pages', item, 'index.html') : './app/index.html',
         }))
     }

@@ -4,3 +4,4 @@
  * create time 2018-11-24 22:51
  */
 
+console.log('common');
