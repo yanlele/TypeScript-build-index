@@ -40,7 +40,7 @@ const baseConfig = {
         rules: [
             {
                 test: /\.less$/,
-                /*use: ExtractTextWebpackPlugin.extract({
+                use: ExtractTextWebpackPlugin.extract({
                     fallback: {
                         loader: 'style-loader',
                         options: {
@@ -49,17 +49,11 @@ const baseConfig = {
                     },
                     use: [
                         {
-                            loader: 'style-loader',
-                            options: {
-                                singleton: true
-                            }
-                        },
-                        {
                             loader: 'css-loader',
-                            /!*options: {
+                            /*options: {
                                 // minimize: true,
                                 // modules: true,
-                            }*!/
+                            }*/
                         },
                         {
                             loader: 'postcss-loader',
@@ -75,8 +69,8 @@ const baseConfig = {
                             loader: 'less-loader'
                         }
                     ]
-                }),*/
-                use: [
+                }),
+                /*use: [
                     {
                         loader: 'style-loader',
                         options: {
@@ -85,10 +79,10 @@ const baseConfig = {
                     },
                     {
                         loader: 'css-loader',
-                        /*options: {
+                        /!*options: {
                             // minimize: true,
                             // modules: true,
-                        }*/
+                        }*!/
                     },
                     {
                         loader: 'postcss-loader',
@@ -103,7 +97,7 @@ const baseConfig = {
                     {
                         loader: 'less-loader'
                     }
-                ]
+                ]*/
             },
             {
                 test: /\.ts$/,

@@ -4,7 +4,9 @@
   "description": "构建TypeScript-webpack 前端程序常用示例项目",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack",
+    "w": "webpack -w",
+    "server": "webpack-dev-server"
   },
   "repository": {
     "type": "git",
