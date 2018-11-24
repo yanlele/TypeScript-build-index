@@ -99,13 +99,13 @@ const generatePage = function ({
     }
 };
 
-const appPaths = fse.readdirSync(path.resolve(__dirname, 'app'));
+const appPaths = fse.readdirSync(path.resolve(__dirname, 'app', 'pages'));
 let appItemPath = '';
 let myPages = [];
 let appItemHtmlTemplate = '';
 appPaths.map(function (item) {
-    appItemPath = path.resolve(__dirname, 'app', item, 'index.ts');
-    appItemHtmlTemplate = path.resolve(__dirname, 'app', item, 'index.html');
+    appItemPath = path.resolve(__dirname, 'app', 'pages', item, 'index.ts');
+    appItemHtmlTemplate = path.resolve(__dirname, 'app', 'pages', item, 'index.html');
     if(fse.pathExistsSync(appItemPath)) {
         myPages.push(generatePage({
             title: item,
@@ -114,7 +114,7 @@ appPaths.map(function (item) {
             },
             name: item,
             chunks: [item, 'vendor', 'common'],
-            template: fse.pathExistsSync(appItemHtmlTemplate) ? path.resolve(__dirname, 'app', item, 'index.html') : './app/index.html',
+            template: fse.pathExistsSync(appItemHtmlTemplate) ? path.resolve(__dirname, 'app', 'pages', item, 'index.html') : './app/index.html',
         }))
     }
 });
