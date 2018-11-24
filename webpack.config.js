@@ -45,6 +45,16 @@ const baseConfig = {
                             }
                         },
                         {
+                            loader: 'postcss-loader',
+                            options: {
+                                ident: 'postcss',
+                                plugins: [
+                                    require('autoprefixer')(),
+                                    require('cssnano')()
+                                ]
+                            }
+                        },
+                        {
                             loader: 'less-loader'
                         }
                     ]
