@@ -39,14 +39,8 @@ const baseConfig = {
     module: {
         rules: [
             {
-                test: /\.ts$/,
-                use: {
-                    loader: 'ts-loader'
-                }
-            },
-            {
                 test: /\.less$/,
-                use: ExtractTextWebpackPlugin.extract({
+                /*use: ExtractTextWebpackPlugin.extract({
                     fallback: {
                         loader: 'style-loader',
                         options: {
@@ -55,11 +49,17 @@ const baseConfig = {
                     },
                     use: [
                         {
-                            loader: 'css-loader',
+                            loader: 'style-loader',
                             options: {
+                                singleton: true
+                            }
+                        },
+                        {
+                            loader: 'css-loader',
+                            /!*options: {
                                 // minimize: true,
                                 // modules: true,
-                            }
+                            }*!/
                         },
                         {
                             loader: 'postcss-loader',
@@ -75,7 +75,41 @@ const baseConfig = {
                             loader: 'less-loader'
                         }
                     ]
-                })
+                }),*/
+                use: [
+                    {
+                        loader: 'style-loader',
+                        options: {
+                            singleton: true
+                        }
+                    },
+                    {
+                        loader: 'css-loader',
+                        /*options: {
+                            // minimize: true,
+                            // modules: true,
+                        }*/
+                    },
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            ident: 'postcss',
+                            plugins: [
+                                require('autoprefixer')(),
+                                require('cssnano')()
+                            ]
+                        }
+                    },
+                    {
+                        loader: 'less-loader'
+                    }
+                ]
+            },
+            {
+                test: /\.ts$/,
+                use: {
+                    loader: 'ts-loader'
+                }
             },
             {
                 test: /\.(png|jpg|jpeg|gif)$/,
