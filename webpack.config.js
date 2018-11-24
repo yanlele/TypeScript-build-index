@@ -3,6 +3,8 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpack = require('clean-webpack-plugin');
 const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
+const PurifyCSS = require('purifycss-webpack');
+const glob = require('glob-all');
 const path = require('path');
 const fse = require('fs-extra');
 
@@ -74,6 +76,47 @@ const baseConfig = {
                         }
                     ]
                 })
+            },
+            {
+                test: /\.(png|jpg|jpeg|gif)$/,
+                use: [
+                    {
+                        loader: 'url-loader',
+                        options: {
+                            limit: 1024 * 10,
+                            fallback: {
+                                loader: 'file-loader',
+                                options: {
+                                    // useRelativePath: true,
+                                    // publicPath: '../img',
+                                    outputPath: './dist-ts/img',
+                                }
+                            }
+                        }
+                    },
+                    {
+                        loader: 'img-loader'
+                    }
+                ]
+            },
+            {
+                test: /\.(eot|woff2|woff|ttf|svg)$/,
+                use: [
+                    {
+                        loader: 'url-loader',
+                        options: {
+                            limit: 1024 * 50,
+                            fallback: {
+                                loader: 'file-loader',
+                                options: {
+                                    // useRelativePath: true,
+                                    // publicPath: '../fonts',
+                                    outputPath: './dist-ts/fonts',
+                                }
+                            }
+                        }
+                    }
+                ]
             }
         ]
     },
@@ -88,6 +131,13 @@ const baseConfig = {
         new webpack.optimize.CommonsChunkPlugin({               // 提取三方生成的代码, 包括模块代码
             names: ['vendor'],
             minChunks: Infinity
+        }),
+
+        new PurifyCSS({
+            paths: glob.sync([
+                path.join(__dirname, './app/*.html'),
+                path.join(__dirname, './app/*.js')
+            ]),
         }),
 
         new webpack.optimize.UglifyJsPlugin()
