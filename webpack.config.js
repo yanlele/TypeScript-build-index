@@ -58,6 +58,7 @@ const baseConfig = {
                             loader: 'css-loader',
                             options: {
                                 // minimize: true,
+                                // modules: true,
                             }
                         },
                         {
