@@ -16,7 +16,8 @@ const baseConfig = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'js/[name].[chunkhash:5].js',
-        publicPath: '/'
+        publicPath: '/',
+        chunkFilename: '[name].bundle.js',              //动态打包文件名
     },
     resolve: {
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
@@ -92,26 +93,17 @@ const baseConfig = {
                     use: [
                         {
                             loader: 'css-loader',
-                            /*options: {
-                                // minimize: true,
-                                // modules: true,
-                            }*/
-                        },
-                        {
-                            loader: 'postcss-loader',
                             options: {
-                                ident: 'postcss',
-                                plugins: [
-                                    require('autoprefixer')(),
-                                    require('cssnano')()
-                                ]
-                            }
+                                minimize: false,
+                                localIdentName: '[path][name]_[local]_[hash:base64:5]'
+                            },
+                            // loader: 'file-loader'
                         },
                         {
                             loader: 'less-loader'
                         }
                     ]
-                }),
+                })
                 /*use: [
                     {
                         loader: 'style-loader',
@@ -198,7 +190,8 @@ const baseConfig = {
 
     plugins: [
         new ExtractTextWebpackPlugin({
-            filename: 'css/[name].[hash].css'                   // 输出路径
+            filename: 'css/[name].[hash].css',                   // 输出路径
+            allChunks: false
         }),
 
         new CleanWebpack(path.resolve(__dirname, 'dist')),

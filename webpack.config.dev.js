@@ -153,16 +153,6 @@ const baseConfig = {
                         }*/
                     },
                     {
-                        loader: 'postcss-loader',
-                        options: {
-                            ident: 'postcss',
-                            plugins: [
-                                require('autoprefixer')(),
-                                require('cssnano')()
-                            ]
-                        }
-                    },
-                    {
                         loader: 'less-loader'
                     }
                 ]
@@ -224,7 +214,8 @@ const baseConfig = {
 
     plugins: [
         new ExtractTextWebpackPlugin({
-            filename: 'css/[name].[hash].css'                   // 输出路径
+            filename: 'css/[name].[hash].css',                   // 输出路径
+            allChunks: false
         }),
 
         new CleanWebpack(path.resolve(__dirname, 'dist')),
@@ -232,13 +223,6 @@ const baseConfig = {
         new webpack.optimize.CommonsChunkPlugin({               // 提取三方生成的代码, 包括模块代码
             names: ['common'],
             minChunks: Infinity
-        }),
-
-        new PurifyCSS({
-            paths: glob.sync([
-                path.join(__dirname, './app/*.html'),
-                path.join(__dirname, './app/*.js')
-            ]),
         }),
 
         new webpack.optimize.UglifyJsPlugin()
