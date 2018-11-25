@@ -3,12 +3,12 @@
  * connect me 331393627@qq.com
  * create time 2018-11-25 22:59
  */
-import Observer from "./Observer";
+
 
 
 class Store {
     private id:number = 0;
-    private currentObserver: Observer;
+
     private static instance: Store;
 
     static getInstance() {
@@ -18,7 +18,6 @@ class Store {
         return Store.instance
     }
 
-
     get _id(): number {
         return this.id;
     }
@@ -27,12 +26,12 @@ class Store {
         this.id = value;
     }
 
-    get _currentObserver(): Observer {
-        return this.currentObserver;
+    static get _instance(): Store {
+        return this.instance;
     }
 
-    set _currentObserver(value: Observer) {
-        this.currentObserver = value;
+    static set _instance(value: Store) {
+        this.instance = value;
     }
 }
 

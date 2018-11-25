@@ -42,9 +42,9 @@ class Observer {
     }
 
     getValue(): string {
-        Store._instance._currentObserver = this;
+        Store.getInstance()._currentObserver = this;
         let value: string = this.vm.$data[this.key];
-        Store._instance._currentObserver = null;
+        Store.getInstance()._currentObserver = null;
         return value
     }
 

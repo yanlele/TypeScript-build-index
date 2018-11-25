@@ -48,7 +48,7 @@ class Compile {
     }
 
     // 节点编译
-    compileNode(node: any): void {
+    compileNode(node) {
         let attrs = [...node.attributes];
         attrs.forEach(attr => {
             if (this.isModelDirective(attr.name)) {

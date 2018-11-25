@@ -13,7 +13,7 @@ class Subject {
     private observers: Observer[];
 
     constructor() {
-        this.id = Store._instance._id++;
+        this.id = Store.getInstance()._id++;
         this.observers = [];
     }
 

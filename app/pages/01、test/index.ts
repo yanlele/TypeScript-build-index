@@ -6,11 +6,14 @@
 
 import Main from './Main';
 require('./index.less');
+import Store from './Store';
 
 
-console.log(123);
-let main = new Main();
-main.run();
+// console.log(123);
+// let main = new Main();
+// main.run();
+//
+// console.log(main._age);
 
-console.log(main._age);
 
+Store.getInstance()._id

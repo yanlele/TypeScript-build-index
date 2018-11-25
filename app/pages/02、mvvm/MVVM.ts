@@ -21,7 +21,7 @@ class MVVM {
         if(opts.el.nodeType === 1) {
             this.$el = opts.el;
         } else {
-            this.$el = document.querySelector('opts.el');
+            this.$el = document.querySelector(opts.el);
         }
 
         this.$data = opts.data || {};

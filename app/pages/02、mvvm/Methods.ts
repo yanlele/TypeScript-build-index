@@ -23,8 +23,8 @@ class Methods {
                 enumerable: true,
                 configurable: true,
                 get: function () {
-                    if (Store._instance._currentObserver) {
-                        Store._instance._currentObserver.subscribeTo(subject);
+                    if (Store.getInstance()._currentObserver) {
+                        Store.getInstance()._currentObserver.subscribeTo(subject);
                     }
                     return val;
                 },
