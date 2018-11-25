@@ -40,9 +40,15 @@ const baseConfig = {
         rules: [
             {
                 test: /\.ts$/,
-                use: {
-                    loader: 'ts-loader'
-                }
+                exclude: /node_modules/,
+                use: [
+                    {
+                        loader: 'babel-loader'
+                    },
+                    {
+                        loader: 'ts-loader'
+                    }
+                ]
             },
             {
                 test: /\.css$/,
