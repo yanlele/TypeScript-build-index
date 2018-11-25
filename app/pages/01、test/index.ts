@@ -10,4 +10,7 @@ require('./index.less');
 
 console.log(123);
 let main = new Main();
-main.run()
+main.run();
+
+console.log(main._age);
+

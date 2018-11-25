@@ -1,12 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>mvvm</title>
 </head>
 <body>
 
-<p class="lele">123</p>
+<div id="app">
+    <h1>Hi，MVVM</h1>
+    <input v-model="name" placeholder="请输入内容" type="text">
+    <h1 class="bind">{{name}} 's age is <strong>{{age}}</strong></h1>
+    <button v-on:click="sayHi">点击欢迎您</button>
+</div>
 
 
 
