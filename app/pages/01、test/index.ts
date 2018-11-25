@@ -5,7 +5,7 @@
  */
 
 import Main from './Main';
-require('./index.less');
+require('./index.css');
 
 
 console.log(123);

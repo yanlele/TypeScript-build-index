@@ -39,6 +39,42 @@ const baseConfig = {
     module: {
         rules: [
             {
+                test: /\.ts$/,
+                use: {
+                    loader: 'ts-loader'
+                }
+            },
+            {
+                test: /\.css$/,
+                use: ExtractTextWebpackPlugin.extract({
+                    fallback: {
+                        loader: 'style-loader',
+                        options: {
+                            singleton: true
+                        }
+                    },
+                    use: [
+                        {
+                            loader: 'css-loader',
+                            /*options: {
+                                // minimize: true,
+                                // modules: true,
+                            }*/
+                        },
+                        {
+                            loader: 'postcss-loader',
+                            options: {
+                                ident: 'postcss',
+                                plugins: [
+                                    require('autoprefixer')(),
+                                    require('cssnano')()
+                                ]
+                            }
+                        }
+                    ]
+                })
+            },
+            {
                 test: /\.less$/,
                 use: ExtractTextWebpackPlugin.extract({
                     fallback: {
@@ -98,12 +134,6 @@ const baseConfig = {
                         loader: 'less-loader'
                     }
                 ]*/
-            },
-            {
-                test: /\.ts$/,
-                use: {
-                    loader: 'ts-loader'
-                }
             },
             {
                 test: /\.(png|jpg|jpeg|gif)$/,
