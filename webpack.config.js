@@ -221,7 +221,7 @@ appPaths.map(function (item) {
                 [item]: `./app/pages/${item}/index.ts`
             },
             name: item,
-            chunks: [item, 'common'],
+            chunks: ['common', item],
             template: fse.pathExistsSync(appItemHtmlTemplate) ? path.resolve(__dirname, 'app', 'pages', item, 'index.html') : './app/index.html',
         }))
     }

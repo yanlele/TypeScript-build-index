@@ -189,7 +189,13 @@ const generatePage = function ({
                 minify: {
                     collapseWhitespace: false                //祛除空格
                 }
-            })
+            }),
+
+            new PurifyCSS({
+                paths: glob.sync([
+                    path.join(template)
+                ]),
+            }),
         ]
     }
 };
@@ -208,7 +214,7 @@ appPaths.map(function (item) {
                 [item]: `./app/pages/${item}/index.ts`
             },
             name: item,
-            chunks: [item, 'common'],
+            chunks: ['common', item],
             template: fse.pathExistsSync(appItemHtmlTemplate) ? path.resolve(__dirname, 'app', 'pages', item, 'index.html') : './app/index.html',
         }))
     }
