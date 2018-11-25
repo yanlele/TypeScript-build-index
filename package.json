@@ -6,6 +6,7 @@
   "scripts": {
     "build": "webpack",
     "dev": "webpack -w --config webpack.config.dev.js",
+    "test": "webpack --config webpack.config.test.js",
     "server": "webpack-dev-server"
   },
   "repository": {
