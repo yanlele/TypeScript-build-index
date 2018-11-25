@@ -22,21 +22,6 @@ const baseConfig = {
     resolve: {
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
     },
-    devServer: {
-        port: 3000,
-        /*proxy: {
-            '/': {
-                target: 'http://localhost:3002',
-                changeOrigin: true,
-                logLevel: 'debug',
-                pathRewrite: {
-                    '': '/api/'
-                }
-            }
-        },*/
-        hot: true,
-        hotOnly: true,
-    },
     module: {
         rules: [
             {
@@ -161,7 +146,6 @@ const baseConfig = {
     },
 
     plugins: [
-
         new webpack.optimize.UglifyJsPlugin(),
 
         new ExtractTextWebpackPlugin({
