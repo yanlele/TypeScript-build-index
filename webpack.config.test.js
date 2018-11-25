@@ -177,7 +177,7 @@ module.exports = {
     plugins: [
         new ExtractTextWebpackPlugin({
             filename: 'css/[name].[hash].css',                   // 输出路径
-            allChunks: false
+            allChunks: true
         }),
 
         new CleanWebpack(path.resolve(__dirname, 'dist')),
@@ -187,13 +187,13 @@ module.exports = {
             minChunks: Infinity
         }),
 
-        // new PurifyCSS({
-        //     paths: glob.sync([
-        //         path.join(__dirname, './app/*.html'),
-        //         path.join(__dirname, './app/*.js')
-        //     ]),
-        // }),
+        new PurifyCSS({
+            paths: glob.sync([
+                path.join(__dirname, './app/pages/01、test/index.html')
+            ]),
+        }),
 
         new webpack.optimize.UglifyJsPlugin()
     ]
 };
+console.log(path.join(__dirname, './app/pages/01、test/index.html'));
