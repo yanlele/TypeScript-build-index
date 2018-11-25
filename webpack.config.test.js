@@ -24,6 +24,8 @@ module.exports = {
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
     },
 
+    devtool: 'source-map',
+
     devServer: {
         port: 3000,
         /*proxy: {
@@ -66,10 +68,10 @@ module.exports = {
                     use: [
                         {
                             loader: 'css-loader',
-                            /*options: {
-                                // minimize: true,
-                                // modules: true,
-                            }*/
+                            options: {
+                                minimize: false,
+                                modules: false,
+                            }
                         },
                         {
                             loader: 'postcss-loader',
@@ -100,41 +102,22 @@ module.exports = {
                                 minimize: false,
                                 localIdentName: '[path][name]_[local]_[hash:base64:5]'
                             },
-                            // loader: 'file-loader'
+                        },
+                        {
+                            loader: 'postcss-loader',
+                            options: {
+                                ident: 'postcss',
+                                plugins: [
+                                    require('autoprefixer')(),
+                                    // require('cssnano')()
+                                ]
+                            }
                         },
                         {
                             loader: 'less-loader'
                         }
                     ]
                 })
-                /*use: [
-                    {
-                        loader: 'style-loader',
-                        options: {
-                            singleton: true
-                        }
-                    },
-                    {
-                        loader: 'css-loader',
-                        /!*options: {
-                            // minimize: true,
-                            // modules: true,
-                        }*!/
-                    },
-                    {
-                        loader: 'postcss-loader',
-                        options: {
-                            ident: 'postcss',
-                            plugins: [
-                                require('autoprefixer')(),
-                                require('cssnano')()
-                            ]
-                        }
-                    },
-                    {
-                        loader: 'less-loader'
-                    }
-                ]*/
             },
             {
                 test: /\.(png|jpg|jpeg|gif)$/,
@@ -198,5 +181,19 @@ module.exports = {
         }),
 
         new CleanWebpack(path.resolve(__dirname, 'dist')),
+
+        new webpack.optimize.CommonsChunkPlugin({               // 提取三方生成的代码, 包括模块代码
+            names: [ 'mainfest'],
+            minChunks: Infinity
+        }),
+
+        // new PurifyCSS({
+        //     paths: glob.sync([
+        //         path.join(__dirname, './app/*.html'),
+        //         path.join(__dirname, './app/*.js')
+        //     ]),
+        // }),
+
+        new webpack.optimize.UglifyJsPlugin()
     ]
 };

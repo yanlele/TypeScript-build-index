@@ -201,12 +201,12 @@ const baseConfig = {
             minChunks: Infinity
         }),
 
-        new PurifyCSS({
-            paths: glob.sync([
-                path.join(__dirname, './app/*.html'),
-                path.join(__dirname, './app/*.js')
-            ]),
-        }),
+        // new PurifyCSS({
+        //     paths: glob.sync([
+        //         path.join(__dirname, './app/*.html'),
+        //         path.join(__dirname, './app/*.js')
+        //     ]),
+        // }),
 
         new webpack.optimize.UglifyJsPlugin()
     ]
