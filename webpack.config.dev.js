@@ -52,34 +52,6 @@ const baseConfig = {
             },
             {
                 test: /\.css$/,
-                /*use: ExtractTextWebpackPlugin.extract({
-                    fallback: {
-                        loader: 'style-loader',
-                        options: {
-                            singleton: true
-                        }
-                    },
-                    use: [
-                        {
-                            loader: 'css-loader',
-                            /!*options: {
-                                // minimize: true,
-                                // modules: true,
-                            }*!/
-                        },
-                        {
-                            loader: 'postcss-loader',
-                            options: {
-                                ident: 'postcss',
-                                plugins: [
-                                    require('autoprefixer')(),
-                                    require('cssnano')()
-                                ]
-                            }
-                        }
-                    ]
-                })*/
-
                 use: [
                     {
                         loader: 'style-loader',
@@ -108,36 +80,6 @@ const baseConfig = {
             },
             {
                 test: /\.less$/,
-                /*use: ExtractTextWebpackPlugin.extract({
-                    fallback: {
-                        loader: 'style-loader',
-                        options: {
-                            singleton: true
-                        }
-                    },
-                    use: [
-                        {
-                            loader: 'css-loader',
-                            /!*options: {
-                                // minimize: true,
-                                // modules: true,
-                            }*!/
-                        },
-                        {
-                            loader: 'postcss-loader',
-                            options: {
-                                ident: 'postcss',
-                                plugins: [
-                                    require('autoprefixer')(),
-                                    require('cssnano')()
-                                ]
-                            }
-                        },
-                        {
-                            loader: 'less-loader'
-                        }
-                    ]
-                }),*/
                 use: [
                     {
                         loader: 'style-loader',

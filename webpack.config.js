@@ -104,34 +104,6 @@ const baseConfig = {
                         }
                     ]
                 })
-                /*use: [
-                    {
-                        loader: 'style-loader',
-                        options: {
-                            singleton: true
-                        }
-                    },
-                    {
-                        loader: 'css-loader',
-                        /!*options: {
-                            // minimize: true,
-                            // modules: true,
-                        }*!/
-                    },
-                    {
-                        loader: 'postcss-loader',
-                        options: {
-                            ident: 'postcss',
-                            plugins: [
-                                require('autoprefixer')(),
-                                require('cssnano')()
-                            ]
-                        }
-                    },
-                    {
-                        loader: 'less-loader'
-                    }
-                ]*/
             },
             {
                 test: /\.(png|jpg|jpeg|gif)$/,
@@ -189,9 +161,12 @@ const baseConfig = {
     },
 
     plugins: [
+
+        new webpack.optimize.UglifyJsPlugin(),
+
         new ExtractTextWebpackPlugin({
             filename: 'css/[name].[hash].css',                   // 输出路径
-            allChunks: false
+            allChunks: true
         }),
 
         new CleanWebpack(path.resolve(__dirname, 'dist')),
@@ -199,16 +174,7 @@ const baseConfig = {
         new webpack.optimize.CommonsChunkPlugin({               // 提取三方生成的代码, 包括模块代码
             names: [ 'common'],
             minChunks: Infinity
-        }),
-
-        // new PurifyCSS({
-        //     paths: glob.sync([
-        //         path.join(__dirname, './app/*.html'),
-        //         path.join(__dirname, './app/*.js')
-        //     ]),
-        // }),
-
-        new webpack.optimize.UglifyJsPlugin()
+        })
     ]
 };
 
@@ -230,7 +196,13 @@ const generatePage = function ({
                 minify: {
                     collapseWhitespace: false                //祛除空格
                 }
-            })
+            }),
+
+            new PurifyCSS({
+                paths: glob.sync([
+                    path.join(template)
+                ]),
+            }),
         ]
     }
 };
