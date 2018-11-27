@@ -51,7 +51,7 @@ class Index {
         let len: number = arr.length;
         let minIndex: number, temp: number;
         for (let i: number = 0; i < len - 1; i++) {
-            minIndex = 1;
+            minIndex = i;
             for (let j: number = i + 1; j < len; j++) {
                 if (arr[minIndex] > arr[j]) {
                     minIndex = j;
@@ -83,7 +83,7 @@ class Index {
 
 let index = new Index();
 
-console.log(index.quickSort(arrNumber));
+console.log(index.quickSort(arrNumber.slice(0)));
 console.log(index.dubbleSort(arrNumber));
 console.log(index.selectionSort(arrNumber));
 console.log(index.insertSort(arrNumber));
