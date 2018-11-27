@@ -2,20 +2,26 @@
  * create by yanlele
  * create time 2018-11-26 10:50
  */
+import Sort from "./Sort";
 
 let arrNumber: number[] = [12, 22, 34, 56, 11, 3, 77, 39, 32];
 
+
 class Index {
     main() {
+        let sort: Sort = new Sort();
 
+        console.log(sort.quickSort(arrNumber));
     }
 
     quickSort(arr: number[]) {
         if (arr.length <= 1) {
             return arr;
         }
-        let middleIndex: number = Math.floor(arr.length / 2);
-        let middle: number = arr.splice(middleIndex, 1)[0];
+        let middleIndex: number;
+        let middle: number;
+        middleIndex = Math.floor(arr.length / 2);
+        middle = arr.splice(middleIndex, 1)[0];
         let left: number[] = [], right: number[] = [];
         for (let i: number = 0; i < arr.length; i++) {
             if (arr[i] < middle) {
@@ -63,11 +69,11 @@ class Index {
         let len: number = arr.length;
         let preindex: number, current: number;
         for (let i: number = 1; i < len; i++) {
-            preindex = i -1;
+            preindex = i - 1;
             current = arr[i];
-            while (preindex >=0 && arr[preindex] > current) {
-                arr[preindex+ 1] = arr[preindex];
-                preindex --;
+            while (preindex >= 0 && arr[preindex] > current) {
+                arr[preindex + 1] = arr[preindex];
+                preindex--;
             }
             arr[preindex + 1] = current;
         }
@@ -81,3 +87,5 @@ console.log(index.quickSort(arrNumber));
 console.log(index.dubbleSort(arrNumber));
 console.log(index.selectionSort(arrNumber));
 console.log(index.insertSort(arrNumber));
+console.log('=================================');
+index.main();
