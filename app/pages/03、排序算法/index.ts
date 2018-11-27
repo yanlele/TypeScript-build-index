@@ -10,8 +10,10 @@ let arrNumber: number[] = [12, 22, 34, 56, 11, 3, 77, 39, 32];
 class Index {
     main() {
         let sort: Sort = new Sort();
-
-        console.log(sort.quickSort(arrNumber));
+        console.log(sort.quickSort(arrNumber.slice(0)));
+        console.log(sort.bubbleSort(arrNumber));
+        console.log(sort.selection(arrNumber));
+        console.log(sort.insertSort(arrNumber))
     }
 
     quickSort(arr: number[]) {
@@ -33,13 +35,13 @@ class Index {
         return this.quickSort(left).concat([middle], this.quickSort(right))
     }
 
-    dubbleSort(arr: number[]) {
-        let len: number = arr.length;
-        for (let i: number = 0; i < len - 1; i++) {
-            for (let j: number = i - 1; j < len - 1 - i; j++) {
-                if (arr[j] > arr[j + 1]) {
-                    let temp: number = arr[j + 1];
-                    arr[j + 1] = arr[j];
+    bubbleSort(arr: number[]) {
+        let len = arr.length;
+        for (let i: number = 0 ; i < len - 1; i++) {
+            for (let j: number = 0; j< len - 1 - i;j++) {
+                if(arr[j] > arr[j+1]) {
+                    let temp: number = arr[j+1];
+                    arr[j+1] = arr[j];
                     arr[j] = temp;
                 }
             }
@@ -84,7 +86,7 @@ class Index {
 let index = new Index();
 
 console.log(index.quickSort(arrNumber.slice(0)));
-console.log(index.dubbleSort(arrNumber));
+console.log(index.bubbleSort(arrNumber));
 console.log(index.selectionSort(arrNumber));
 console.log(index.insertSort(arrNumber));
 console.log('=================================');
