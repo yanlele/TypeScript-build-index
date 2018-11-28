@@ -10,7 +10,8 @@ class Sort {
         if (arr.length <= 1) {
             return arr;
         }
-        let middle: number, middleIndex: number, left: number[] = [], right: number[] = [];
+
+        let middle: number, middleIndex: number, right: number[] = [], left: number[] = [];
         middleIndex = Math.floor(arr.length / 2);
         middle = arr.splice(middleIndex, 1)[0];
         for (let i: number = 0; i < arr.length; i++) {
@@ -20,16 +21,18 @@ class Sort {
                 right.push(arr[i])
             }
         }
+
         return this.quickSort(left).concat([middle], this.quickSort(right))
     }
 
     bubbleSort(arr: number[]) {
-        let temp: number, len = arr.length;
-        for (let i: number = 0 ; i < len - 1; i++) {
-            for (let j: number = 0; j< len - 1 - i;j++) {
-                if(arr[j] > arr[j+1]) {
-                    temp = arr[j+1];
-                    arr[j+1] = arr[j];
+        let temp: number;
+        let len: number = arr.length;
+        for (let i: number = 0; i < len - 1; i++) {
+            for (let j: number = 0; j < len - 1 - i; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    temp = arr[j + 1];
+                    arr[j + 1] = arr[j];
                     arr[j] = temp;
                 }
             }
@@ -37,12 +40,14 @@ class Sort {
         return arr;
     }
 
-    selection(arr: number[]) {
-        let minIndex: number, len = arr.length, temp: number;
-        for (let i: number = 0; i< len - 1;i++) {
+
+    selectionSort(arr: number[]) {
+        let minIndex: number;
+        let len: number = arr.length, temp: number;
+        for (let i: number = 0; i < len - 1; i++) {
             minIndex = i;
-            for (let j: number = i +1;j<len;j++) {
-                if(arr[minIndex] > arr[j]) {
+            for (let j: number = i + 1; j < len; j++) {
+                if (arr[minIndex] > arr[j]) {
                     minIndex = j
                 }
             }
@@ -54,18 +59,18 @@ class Sort {
     }
 
     insertSort(arr: number[]) {
-        let len = arr.length;
-        let preIndex: number , current: number;
-        for (let i : number = 1; i< len;i++) {
-            preIndex = i -1;
+        let len: number = arr.length;
+        let preIndex: number, current: number;
+        for (let i: number = 1; i < len; i++) {
+            preIndex = i - 1;
             current = arr[i];
-            while (preIndex >=0 && arr[preIndex] > current) {
-                arr[preIndex + 1] = arr[preIndex];
+            while (preIndex >= 0 && arr[preIndex] > current) {
+                arr[preIndex+1] = arr[preIndex];
                 preIndex --;
             }
-            arr[preIndex + 1] = current
+            arr[preIndex + 1] = current;
         }
-        return arr;
+        return arr
     }
 }
 

@@ -12,7 +12,7 @@ class Index {
         let sort: Sort = new Sort();
         console.log(sort.quickSort(arrNumber.slice(0)));
         console.log(sort.bubbleSort(arrNumber));
-        console.log(sort.selection(arrNumber));
+        console.log(sort.selectionSort(arrNumber));
         console.log(sort.insertSort(arrNumber))
     }
 
