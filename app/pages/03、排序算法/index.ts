@@ -10,10 +10,10 @@ let arrNumber: number[] = [12, 22, 34, 56, 11, 3, 77, 39, 32];
 class Index {
     main() {
         let sort: Sort = new Sort();
-        console.log(sort.quickSort(arrNumber.slice(0)));
-        console.log(sort.bubbleSort(arrNumber));
-        console.log(sort.selectionSort(arrNumber));
-        console.log(sort.insertSort(arrNumber))
+        // console.log(sort.quickSort(arrNumber.slice(0)));
+        // console.log(sort.bubbleSort(arrNumber));
+        // console.log(sort.selectionSort(arrNumber));
+        // console.log(sort.insertSort(arrNumber))
     }
 
     quickSort(arr: number[]) {
