@@ -11,13 +11,13 @@ class Sort {
             return arr;
         }
         let middle: number, middleIndex: number;
-        let left: number[], right: number[];
+        let left: number[] = [], right: number[] = [];
 
         middleIndex = Math.floor(arr.length / 2);
         middle = arr.splice(middleIndex, 1)[0];
 
         for (let i: number = 0; i < arr.length; i++) {
-            if(arr[i] < middle) {
+            if (arr[i] < middle) {
                 left.push(arr[i]);
             } else {
                 right.push(arr[i]);
@@ -25,6 +25,60 @@ class Sort {
         }
 
         return this.quickSort(left).concat([middle], this.quickSort(right));
+    }
+
+    bubbleSort(arr: number []) {
+        let temp: number;
+        let len: number = arr.length;
+        for (let i: number = 0; i < len - 1; i++) {
+            for (let j: number = 0; j < len - 1 - i; j++) {
+                if(arr[j] > arr[j+1]) {
+                    temp = arr[j+1];
+                    arr[j+1] = arr[j];
+                    arr[j] = temp;
+                }
+            }
+        }
+        return arr;
+    }
+
+    selectionSort(arr:number[]) {
+        let minIndex:number;
+        let temp: number;
+        let len: number = arr.length;
+
+        for(let i : number = 0; i< len - 1;i++) {
+            minIndex = i;
+            for (let j: number = i+1; j< len; j++) {
+                if(arr[minIndex] > arr[j]) {
+                    minIndex = j;
+                }
+            }
+
+            temp = arr[i];
+            arr[i] = arr[minIndex];
+            arr[minIndex] = temp;
+        }
+
+        return arr;
+    }
+
+    insertSort(arr: number[]) {
+        let preIndex:number;
+        let len: number = arr.length;
+        let current: number;
+
+        for (let i: number = 1; i < len; i++) {
+            preIndex = i -1;
+            current = arr[i];
+            while (preIndex >= 0 && arr[preIndex] > current) {
+                arr[preIndex + 1] = arr[preIndex];
+                preIndex--;
+            }
+            arr[preIndex + 1] = current;
+        }
+
+        return arr;
     }
 }
 
