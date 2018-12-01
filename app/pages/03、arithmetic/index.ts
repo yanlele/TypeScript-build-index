@@ -10,17 +10,12 @@ let arrNumber: number[] = [12, 22, 34, 56, 11, 3, 77, 39, 32];
 class Index {
     main() {
         let sort: Sort = new Sort();
-        // console.log(sort.quickSort(arrNumber.slice(0)));
-        // console.log(sort.bubbleSort(arrNumber.splice(0)));
-        // console.log(sort.selectionSort(arrNumber.splice(0)));
-        // console.log(sort.insertSort(arrNumber.splice(0)))
-
-
 
         let $quickSort: HTMLElement = document.getElementById('quick-sort');
         let $bubbleSort: HTMLElement = document.getElementById('bubble-sort');
         let $selectionSort: HTMLElement = document.getElementById('selection-sort');
         let $insertSort: HTMLElement = document.getElementById('insert-sort');
+        let $shellSort: HTMLElement = document.getElementById('shell-sort');
 
         $quickSort.addEventListener('click', function () {
             console.log(sort.quickSort(arrNumber.slice(0)))
@@ -36,7 +31,13 @@ class Index {
 
         $insertSort.addEventListener('click', function () {
             console.log(sort.insertSort(arrNumber.slice(0)))
-        })
+        });
+
+        $shellSort.addEventListener('click', function () {
+            console.log(sort.shellSort(arrNumber.slice(0)))
+        });
+
+
 
         console.log(arrNumber);
     }

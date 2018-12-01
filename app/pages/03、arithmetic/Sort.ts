@@ -80,6 +80,21 @@ class Sort {
 
         return arr;
     }
+
+    shellSort(arr: number[]) {
+        let len: number = arr.length;
+        let gap: number = Math.floor(len/2);
+        for (gap; gap > 0; gap = Math.floor(gap / 2)) {
+            for (let i = gap; i < len; i++) {
+                for (let j = i - gap; j >= 0 && arr[j] > arr[gap + j]; j -= gap) {
+                    let temp = arr[j];
+                    arr[j] = arr[gap + j];
+                    arr[gap + j] = temp;
+                }
+            }
+        }
+        return arr;
+    }
 }
 
 
