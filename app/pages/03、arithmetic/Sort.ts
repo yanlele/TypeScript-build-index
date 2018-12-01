@@ -64,18 +64,24 @@ class Sort {
     }
 
     insertSort(arr: number[]) {
-        let preIndex:number;
+        // let preIndex:number;
         let len: number = arr.length;
         let current: number;
 
         for (let i: number = 1; i < len; i++) {
-            preIndex = i -1;
+            /*preIndex = i -1;
             current = arr[i];
             while (preIndex >= 0 && arr[preIndex] > current) {
                 arr[preIndex + 1] = arr[preIndex];
                 preIndex--;
             }
-            arr[preIndex + 1] = current;
+            arr[preIndex + 1] = current;*/
+            current = arr[i];
+            for (let j: number = i -1 ; j >=0 && arr[j] > current; j--) {
+                let temp: number = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = temp;
+            }
         }
 
         return arr;
