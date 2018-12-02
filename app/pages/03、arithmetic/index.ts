@@ -46,6 +46,7 @@ class Index {
         // 去重算法
         let $normalUnique: HTMLElement = document.getElementById('normal-unique1');
         let $unique2:HTMLElement = document.getElementById('unique2');
+        let $unique3:HTMLElement = document.getElementById('unique3');
 
         $normalUnique.addEventListener('click', function () {
             console.log(unique.unique1(uniqueNumber.slice(0)));
@@ -54,6 +55,11 @@ class Index {
         $unique2.addEventListener('click', function () {
             console.log(unique.unique2(uniqueNumber.slice(0)))
         });
+
+        $unique3.addEventListener('click', function () {
+            console.log(unique.unique3(uniqueNumber.slice(0)))
+        });
+
 
 
         console.log(arrNumber);
