@@ -47,6 +47,8 @@ class Index {
         let $normalUnique: HTMLElement = document.getElementById('normal-unique1');
         let $unique2:HTMLElement = document.getElementById('unique2');
         let $unique3:HTMLElement = document.getElementById('unique3');
+        let $unique4: HTMLElement = document.getElementById('unique4');
+
 
         $normalUnique.addEventListener('click', function () {
             console.log(unique.unique1(uniqueNumber.slice(0)));
@@ -58,6 +60,10 @@ class Index {
 
         $unique3.addEventListener('click', function () {
             console.log(unique.unique3(uniqueNumber.slice(0)))
+        });
+
+        $unique4.addEventListener('click' , function () {
+            console.log(unique.unique4(uniqueNumber.slice(0)));
         });
 
 

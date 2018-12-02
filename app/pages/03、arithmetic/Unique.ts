@@ -52,6 +52,27 @@ class Unique {
         }
         return newArr;
     }
+
+    // 排序后相邻去除法
+    unique4(arr: number[]) {
+        // array.sort();
+        // var re = [array[0]];
+        // for (var i = 1; i < array.length; i++) {
+        //     if (array[i] !== re[re.length - 1]) {
+        //         re.push(array[i]);
+        //     }
+        // }
+        // return re;
+
+        arr.sort();
+        let re: number [] = [arr[0]];
+        for (let i : number = 1;i<arr.length;i++) {
+            if(arr[i] !== re[re.length -1]) {
+                re.push(arr[i])
+            }
+        }
+        return re;
+    }
 }
 
 export default Unique;
