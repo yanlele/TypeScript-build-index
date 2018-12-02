@@ -3,14 +3,20 @@
  * create time 2018-11-26 10:50
  */
 import Sort from "./Sort";
+import Unique from "./Unique";
 
 let arrNumber: number[] = [12, 22, 34, 56, 11, 3, 77, 39, 32];
+
+let uniqueNumber: number[] = [2, 44, 6, 12, 45, 12, 34, 88, 88, 99];
 
 
 class Index {
     main() {
         let sort: Sort = new Sort();
+        let unique: Unique = new Unique();
 
+
+        // 排序算法
         let $quickSort: HTMLElement = document.getElementById('quick-sort');
         let $bubbleSort: HTMLElement = document.getElementById('bubble-sort');
         let $selectionSort: HTMLElement = document.getElementById('selection-sort');
@@ -37,6 +43,17 @@ class Index {
             console.log(sort.shellSort(arrNumber.slice(0)))
         });
 
+        // 去重算法
+        let $normalUnique: HTMLElement = document.getElementById('normal-unique1');
+        let $unique2:HTMLElement = document.getElementById('unique2');
+
+        $normalUnique.addEventListener('click', function () {
+            console.log(unique.unique1(uniqueNumber.slice(0)));
+        });
+
+        $unique2.addEventListener('click', function () {
+            console.log(unique.unique2(uniqueNumber.slice(0)))
+        });
 
 
         console.log(arrNumber);
@@ -63,11 +80,11 @@ class Index {
 
     bubbleSort(arr: number[]) {
         let len = arr.length;
-        for (let i: number = 0 ; i < len - 1; i++) {
-            for (let j: number = 0; j< len - 1 - i;j++) {
-                if(arr[j] > arr[j+1]) {
-                    let temp: number = arr[j+1];
-                    arr[j+1] = arr[j];
+        for (let i: number = 0; i < len - 1; i++) {
+            for (let j: number = 0; j < len - 1 - i; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    let temp: number = arr[j + 1];
+                    arr[j + 1] = arr[j];
                     arr[j] = temp;
                 }
             }
