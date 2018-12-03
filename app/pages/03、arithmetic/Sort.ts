@@ -7,7 +7,7 @@
 
 class Sort {
     quickSort(arr: number[]) {
-        if (arr.length <= 0) {
+        /*if (arr.length <= 0) {
             return arr;
         }
         let middle: number, middleIndex: number;
@@ -24,14 +24,30 @@ class Sort {
             }
         }
 
+        return this.quickSort(left).concat([middle], this.quickSort(right));*/
+        if(arr.length <=1) {
+            return arr;
+        }
+        let middle: number, middleIndex:number, left:number[] = [], right:number[] = [];
+        middleIndex = Math.floor(arr.length/2);
+        middle = arr.splice(middleIndex, 1)[0];
+        for (let i: number = 0;i < arr.length;i ++) {
+            if(arr[i] < middle) {
+                left.push(arr[i])
+            } else {
+                right.push(arr[i])
+            }
+        }
+
         return this.quickSort(left).concat([middle], this.quickSort(right));
     }
 
+
     bubbleSort(arr: number []) {
-        let temp: number;
-        let len: number = arr.length;
-        for (let i: number = 0; i < len - 1; i++) {
-            for (let j: number = 0; j < len - 1 - i; j++) {
+        let temp:number;
+        let len:number = arr.length;
+        for (let i : number = 0;i< len -1 ; i++) {
+            for (let j:number = 0; j< len-1-i;j++) {
                 if(arr[j] > arr[j+1]) {
                     temp = arr[j+1];
                     arr[j+1] = arr[j];
