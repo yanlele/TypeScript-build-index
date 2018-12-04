@@ -18,6 +18,7 @@ class Index {
 
 
         // 排序算法
+        console.log(arrNumber);
         let $quickSort: HTMLElement = document.getElementById('quick-sort');
         let $bubbleSort: HTMLElement = document.getElementById('bubble-sort');
         let $selectionSort: HTMLElement = document.getElementById('selection-sort');
@@ -92,9 +93,6 @@ class Index {
         $throttle.addEventListener('click', function () {
              throttle();
         });
-
-
-        console.log(arrNumber);
     }
 
     quickSort(arr: number[]) {
