@@ -69,8 +69,9 @@ class Index {
         });
 
         // 防抖和节流函数
-        let {debounced, cancel} = Method.dubounce(function () {
-            console.log('我是防抖函数')
+        let {debounced, cancel} = Method.dubounce(function (...args) {
+            console.log('我是防抖函数');
+            console.log(args);
         }, 2000, false);
 
         let throttle = Method.throttle(function () {

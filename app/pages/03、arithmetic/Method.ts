@@ -1,18 +1,18 @@
 class Method {
     static dubounce(func: Function, wait: number, immediate: boolean) {
         let timer;
-        let debounced = function () {
+        let debounced = function (...args) {
             let context = this;
             if(timer) clearTimeout(timer);
             if(immediate) {
                 let callNow = !timer;
                 if(callNow) {
-                    func.call(context, arguments);
+                    func.call(context, args);
                 }
                 timer = setTimeout(()=>timer = null, wait);
             } else {
                 timer = setTimeout(function(){
-                    func.call(context, arguments);
+                    func.call(context, args);
                 }, wait)
             }
         };
