@@ -4,6 +4,7 @@
  */
 import Sort from "./Sort";
 import Unique from "./Unique";
+import Method from "./Method";
 
 let arrNumber: number[] = [12, 22, 34, 56, 11, 3, 77, 39, 32];
 
@@ -66,6 +67,31 @@ class Index {
             console.log(unique.unique4(uniqueNumber.slice(0)));
         });
 
+        // 防抖和节流函数
+        let {debounced, cancel} = Method.dubounce(function () {
+            console.log('我是防抖函数')
+        }, 2000, false);
+
+        let throttle = Method.throttle(function () {
+            console.log('我是节流函数')
+        }, 2000);
+
+        let $debounce: HTMLElement = document.getElementById('debounce');
+        let $debounceExpire: HTMLElement = document.getElementById('debounce-expire');
+        let $throttle: HTMLElement = document.getElementById('throttle');
+        let $throttleExpire: HTMLElement = document.getElementById('throttle-expire');
+
+        $debounce.addEventListener('click', function () {
+            debounced();
+        });
+
+        $debounceExpire.addEventListener('click', function () {
+            cancel();
+        });
+
+        $throttle.addEventListener('click', function () {
+             throttle();
+        });
 
 
         console.log(arrNumber);
