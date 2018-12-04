@@ -97,10 +97,10 @@ class Sort {
         let len: number = arr.length,
             temp: number,
             minIndex: number;
-        for (let i : number = 0; i < len - 1; i++) {
+        for (let i: number = 0; i < len - 1; i++) {
             minIndex = i;
-            for (let j: number = i +1 ; j< len;j++) {
-                if(arr[minIndex] > arr[j]) {
+            for (let j: number = i + 1; j < len; j++) {
+                if (arr[minIndex] > arr[j]) {
                     minIndex = j;
                 }
             }
@@ -128,12 +128,12 @@ class Sort {
         let len: number = arr.length,
             temp: number,
             current: number;
-        for (let i: number = 0;i < len;i++){
+        for (let i: number = 0; i < len; i++) {
             current = arr[i];
-            for(let j: number = i+1;j>=0&& arr[j]> current;j--) {
+            for (let j: number = i - 1; j >= 0 && arr[j] > current; j--) {
                 temp = arr[j];
-                arr[j] = arr[j+1];
-                arr[j+1] = temp;
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
             }
         }
         return arr;
@@ -153,7 +153,7 @@ class Sort {
         }
         return arr;*/
 
-        let len: number = arr.length,
+        /*let len: number = arr.length,
             gap: number = Math.floor(len / 2),
             temp: number;
         for (gap; gap > 0; gap = Math.floor(gap / 2)) {
@@ -162,6 +162,21 @@ class Sort {
                     temp = arr[j];
                     arr[j] = arr[j + gap];
                     arr[j + gap] = temp;
+                }
+            }
+        }
+        return arr;*/
+
+        let len: number = arr.length,
+            temp: number,
+            gap: number = Math.floor(len/2);
+
+        for(gap;gap>0;gap=Math.floor(gap/2)) {
+            for (let i : number = 0;i < len;i++) {
+                for(let j: number = i-gap; j>= 0 && arr[j]> arr[gap+j];j-=gap) {
+                    temp = arr[j];
+                    arr[j] = arr[j+gap];
+                    arr[j+gap] = temp;
                 }
             }
         }
