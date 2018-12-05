@@ -84,7 +84,7 @@ class Index {
         let $throttleExpire: HTMLElement = document.getElementById('throttle-expire');
 
         $debounce.addEventListener('click', function () {
-            debounced();
+            debounced('123', 'yanle');
         });
 
         $debounceExpire.addEventListener('click', function () {
