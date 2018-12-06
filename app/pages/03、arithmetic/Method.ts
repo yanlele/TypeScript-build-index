@@ -1,32 +1,6 @@
 class Method {
     static dubounce(func: Function, wait: number, immediate: boolean) {
-        // let timer;
-        // let debounced = function (...args) {
-        //     let context = this;
-        //     if(timer) clearTimeout(timer);
-        //     if(immediate) {
-        //         let callNow = !timer;
-        //         if(callNow) {
-        //             func.call(context, args);
-        //         }
-        //         timer = setTimeout(()=>timer = null, wait);
-        //     } else {
-        //         timer = setTimeout(function(){
-        //             func.call(context, args);
-        //             timer = null;
-        //         }, wait)
-        //     }
-        // };
-        // let cancel = function() {
-        //    clearTimeout(timer);
-        //    timer = null;
-        // };
-        // return {
-        //     debounced,
-        //     cancel
-        // }
-
-        let timer;
+        /*let timer;
         let debounced = function (...args) {
             let context = this;
             if(immediate) {
@@ -55,6 +29,37 @@ class Method {
         return {
             debounced,
             cancel
+        }*/
+
+        let timer;
+        let debounced = function (...args: Array<any>) {
+            let context = this;
+            if(immediate) {
+                let now = !timer;
+                if(now) {
+                    func.apply(context, args);
+                    timer = setTimeout(function () {
+                        return timer  =null;
+                    }, wait)
+                } else {
+                    timer = setTimeout(function() {
+                        func.apply(context, args);
+                        timer = null;
+                    }, wait)
+                }
+            }
+        };
+
+        let cancel = function () {
+            if(timer) {
+                clearTimeout(timer);
+                timer = null;
+            }
+        };
+
+        return {
+            debounced,
+
         }
     }
 
