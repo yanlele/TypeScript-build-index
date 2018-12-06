@@ -81,29 +81,7 @@ class Method {
             }
         }*/
 
-        /*let previous: number = 0;
-        let context, timer, remaining: number;
-        return function (...args: Array<any>) {
-            context = this;
-            let now: number = +new Date();
-            remaining = wait - (now - previous);
-            if(remaining <=0) {
-                func.apply(context, args);
-                previous = now;
-            } else {
-                if(timer) {
-                    clearTimeout(timer);
-                    timer = null;
-                }
-                timer = setTimeout(function() {
-                    func.apply(context, args);
-                    timer = null;
-                    previous = +new Date();
-                }, remaining)
-            }
-        }*/
-
-        let pre: number = 0;
+        /*let pre: number = 0;
         let timer, context, remain: number;
         return function(...args: Array<any>) {
             context = this;
@@ -121,6 +99,28 @@ class Method {
                     func.apply(context, args);
                     timer = null;
                     pre = +new Date();
+                }, remain)
+            }
+        }*/
+
+        let pre: number = 0;
+        let timer, context, remain: number;
+        return function(...args: Array<any>) {
+            context = this;
+            let now: number = +new Date();
+            remain = wait - (now - pre);
+            if(remain <= 0) {
+                func.apply(context, args);
+                pre = now
+            } else {
+                if(timer) {
+                    clearTimeout(timer);
+                    timer = null;
+                }
+                timer = setTimeout(function () {
+                    func.apply(context, args);
+                    timer = null;
+                    pre = + new Date();
                 }, remain)
             }
         }
