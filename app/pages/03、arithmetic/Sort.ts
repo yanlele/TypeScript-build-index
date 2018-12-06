@@ -25,24 +25,23 @@ class Sort {
         }
 
         return this.quickSort(left).concat([middle], this.quickSort(right));*/
-        if (arr.length <= 1) {
+        if (arr.length <= 0) {
             return arr;
         }
-
         let middle: number,
             middleIndex: number,
             left: number[] = [],
             right: number[] = [];
+
         middleIndex = Math.floor(arr.length / 2);
         middle = arr.splice(middleIndex, 1)[0];
-        for (let i: number = 0; i < arr.length; i++) {
-            if (arr[i] < middle) {
+        for(let i: number = 0; i< arr.length; i++) {
+            if(arr[i]< middle) {
                 left.push(arr[i])
             } else {
                 right.push(arr[i])
             }
         }
-
         return this.quickSort(left).concat([middle], this.quickSort(right));
     }
 
@@ -169,14 +168,14 @@ class Sort {
 
         let len: number = arr.length,
             temp: number,
-            gap: number = Math.floor(len/2);
+            gap: number = Math.floor(len / 2);
 
-        for(gap;gap>0;gap=Math.floor(gap/2)) {
-            for (let i : number = 0;i < len;i++) {
-                for(let j: number = i-gap; j>= 0 && arr[j]> arr[gap+j];j-=gap) {
+        for (gap; gap > 0; gap = Math.floor(gap / 2)) {
+            for (let i: number = 0; i < len; i++) {
+                for (let j: number = i - gap; j >= 0 && arr[j] > arr[gap + j]; j -= gap) {
                     temp = arr[j];
-                    arr[j] = arr[j+gap];
-                    arr[j+gap] = temp;
+                    arr[j] = arr[j + gap];
+                    arr[j + gap] = temp;
                 }
             }
         }
