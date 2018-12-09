@@ -25,18 +25,17 @@ class Sort {
         }
 
         return this.quickSort(left).concat([middle], this.quickSort(right));*/
-        if (arr.length <= 0) {
+        if(arr.length <= 0) {
             return arr;
         }
-        let middle: number,
-            middleIndex: number,
-            left: number[] = [],
+        let middleIndex: number,
+            middle: number,
+            left:number[] = [],
             right: number[] = [];
-
-        middleIndex = Math.floor(arr.length / 2);
+        middleIndex = Math.floor(arr.length/2);
         middle = arr.splice(middleIndex, 1)[0];
-        for(let i: number = 0; i< arr.length; i++) {
-            if(arr[i]< middle) {
+        for(let i : number = 0; i< arr.length;i++) {
+            if(arr[i] < middle) {
                 left.push(arr[i])
             } else {
                 right.push(arr[i])
@@ -60,13 +59,13 @@ class Sort {
         }
         return arr;*/
 
-        let temp: number;
-        let len: number = arr.length;
-        for (let i: number = 0; i < len - 1; i++) {
-            for (let j: number = 0; j < len - 1 - i; j++) {
-                if (arr[j] > arr[j + 1]) {
-                    temp = arr[j + 1];
-                    arr[j + 1] = arr[j];
+        let temp: number,
+            len: number = arr.length;
+        for(let i : number = 0; i < len -1; i++) {
+            for(let j: number = 0; j< len - 1 - i; j++) {
+                if(arr[j]> arr[j+1]) {
+                    temp = arr[j+1];
+                    arr[j+1] = arr[j];
                     arr[j] = temp;
                 }
             }
@@ -93,13 +92,13 @@ class Sort {
         }
 
         return arr;*/
-        let len: number = arr.length,
+        let minIndex: number,
             temp: number,
-            minIndex: number;
-        for (let i: number = 0; i < len - 1; i++) {
+            len: number = arr.length;
+        for(let i: number = 0; i < len -1 ; i ++) {
             minIndex = i;
-            for (let j: number = i + 1; j < len; j++) {
-                if (arr[minIndex] > arr[j]) {
+            for (let j: number = i+1; j< len;j++) {
+                if(arr[minIndex] > arr[j]) {
                     minIndex = j;
                 }
             }
@@ -114,7 +113,7 @@ class Sort {
         /*let len: number = arr.length,
             temp: number,
             current: number;
-        for (let i: number = 0; i < len; i++) {
+        for (let i: number = 1; i < len; i++) {
             current = arr[i];
             for (let j: number = i - 1; j >= 0 && arr[j] > current; j--) {
                 temp = arr[j];
@@ -127,12 +126,12 @@ class Sort {
         let len: number = arr.length,
             temp: number,
             current: number;
-        for (let i: number = 0; i < len; i++) {
+        for(let i: number = 1; i< len;i++) {
             current = arr[i];
-            for (let j: number = i - 1; j >= 0 && arr[j] > current; j--) {
+            for(let j: number = i-1; j >= 0 && arr[j]> current;j--) {
                 temp = arr[j];
-                arr[j] = arr[j + 1];
-                arr[j + 1] = temp;
+                arr[j] = arr[j+1];
+                arr[j+1] = temp;
             }
         }
         return arr;
@@ -167,15 +166,14 @@ class Sort {
         return arr;*/
 
         let len: number = arr.length,
-            temp: number,
-            gap: number = Math.floor(len / 2);
-
-        for (gap; gap > 0; gap = Math.floor(gap / 2)) {
-            for (let i: number = 0; i < len; i++) {
-                for (let j: number = i - gap; j >= 0 && arr[j] > arr[gap + j]; j -= gap) {
+            gap: number = Math.floor(len/2),
+            temp: number;
+        for(gap; gap>0;gap = Math.floor(gap/2)) {
+            for(let i: number = 1; i< len;i ++) {
+                for(let j: number = i -gap; j>=0 && arr[j] > arr[j+gap] ;j-=gap) {
                     temp = arr[j];
-                    arr[j] = arr[j + gap];
-                    arr[j + gap] = temp;
+                    arr[j] = arr[j+gap];
+                    arr[j+gap] = temp;
                 }
             }
         }
