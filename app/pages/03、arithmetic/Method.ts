@@ -3,6 +3,7 @@ class Method {
         /*let timer;
         let debounced = function (...args) {
             let context = this;
+            if(timer) clearTimeout(timer);
             if(immediate) {
                 let now = !timer;
                 if(now) {
@@ -31,35 +32,39 @@ class Method {
             cancel
         }*/
 
+
         let timer;
-        let debounced = function (...args: Array<any>) {
+        let debounced = function (...args) {
             let context = this;
+            if(timer) {
+                clearTimeout(timer);
+            }
+
             if(immediate) {
                 let now = !timer;
                 if(now) {
                     func.apply(context, args);
                     timer = setTimeout(function () {
-                        return timer  =null;
-                    }, wait)
-                } else {
-                    timer = setTimeout(function() {
-                        func.apply(context, args);
                         timer = null;
                     }, wait)
                 }
+            } else {
+                timer = setTimeout(function () {
+                    func.apply(context, args);
+                    timer = null;
+                }, wait)
             }
         };
 
         let cancel = function () {
             if(timer) {
                 clearTimeout(timer);
-                timer = null;
+                timer = null
             }
         };
-
         return {
             debounced,
-
+            cancel
         }
     }
 
@@ -109,23 +114,25 @@ class Method {
         }*/
 
         let pre: number = 0;
-        let timer, context, remain: number;
-        return function(...args: Array<any>) {
+        let timer,
+            context,
+            remain: number;
+        return function () {
             context = this;
             let now: number = +new Date();
             remain = wait - (now - pre);
             if(remain <= 0) {
-                func.apply(context, args);
-                pre = now
+                func.apply(context, arguments);
+                pre = now;
             } else {
                 if(timer) {
                     clearTimeout(timer);
                     timer = null;
                 }
                 timer = setTimeout(function () {
-                    func.apply(context, args);
+                    func.apply(context, arguments);
                     timer = null;
-                    pre = + new Date();
+                    pre = +new Date()
                 }, remain)
             }
         }
