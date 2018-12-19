@@ -25,16 +25,16 @@ class Sort {
         }
 
         return this.quickSort(left).concat([middle], this.quickSort(right));*/
-        if(arr.length <= 0) {
+        if(arr.length < 1) {
             return arr;
         }
-        let middleIndex: number,
-            middle: number,
-            left:number[] = [],
+        let middle: number,
+            middleIndex: number,
+            left: number[] = [],
             right: number[] = [];
         middleIndex = Math.floor(arr.length/2);
         middle = arr.splice(middleIndex, 1)[0];
-        for(let i : number = 0; i< arr.length;i++) {
+        for(let i:number =0 ;i  < arr.length ;i ++) {
             if(arr[i] < middle) {
                 left.push(arr[i])
             } else {
