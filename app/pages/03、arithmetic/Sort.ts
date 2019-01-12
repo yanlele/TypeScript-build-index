@@ -137,34 +137,7 @@ class Sort {
     }
 
     shellSort(arr: number[]) {
-        /*let len: number = arr.length;
-        let gap: number = Math.floor(len/2);
-        for (gap; gap > 0; gap = Math.floor(gap / 2)) {
-            for (let i = gap; i < len; i++) {
-                for (let j = i - gap; j >= 0 && arr[j] > arr[gap + j]; j -= gap) {
-                    let temp = arr[j];
-                    arr[j] = arr[gap + j];
-                    arr[gap + j] = temp;
-                }
-            }
-        }
-        return arr;*/
-
         /*let len: number = arr.length,
-            gap: number = Math.floor(len / 2),
-            temp: number;
-        for (gap; gap > 0; gap = Math.floor(gap / 2)) {
-            for (let i: number = 0; i < len; i++) {
-                for (let j: number = i - gap; j >= 0 && arr[j] > arr[gap + j]; j -= gap) {
-                    temp = arr[j];
-                    arr[j] = arr[j + gap];
-                    arr[j + gap] = temp;
-                }
-            }
-        }
-        return arr;*/
-
-        let len: number = arr.length,
             gap: number = Math.floor(len / 2),
             temp: number;
         for (gap; gap > 0; gap = Math.floor(gap / 2)) {
@@ -173,6 +146,20 @@ class Sort {
                     temp = arr[j];
                     arr[j] = arr[j + gap];
                     arr[j + gap] = temp;
+                }
+            }
+        }
+        return arr;*/
+
+        let len: number  = arr.length,
+            gap: number = Math.floor(len/2),
+            temp: number;
+        for (gap;gap>0;gap=Math.floor(gap/2)) {
+            for (let i : number = 1; i < len; i++) {
+                for(let j: number = i - gap;j>=0&& arr[j] > arr[j+gap];j-=gap){
+                    temp = arr[j];
+                    arr[j] = arr[j+gap];
+                    arr[j+gap] = temp;
                 }
             }
         }
