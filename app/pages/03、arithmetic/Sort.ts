@@ -94,10 +94,10 @@ class Sort {
         let minIndex: number,
             temp: number,
             len: number = arr.length;
-        for (let i: number = 0; i < len - 1; i++) {
+        for (let i:  number = 0; i< len -1 ;i++) {
             minIndex = i;
-            for (let j: number = i + 1; j < len; j++) {
-                if (arr[minIndex] > arr[j]) {
+            for (let j:number = i+1; j< len;j++) {
+                if(arr[minIndex] > arr[j]) {
                     minIndex = j
                 }
             }
@@ -128,8 +128,8 @@ class Sort {
         for (let i: number = 1; i < len; i++) {
             current = arr[i];
             for (let j: number = i - 1; j >= 0 && arr[j] > current; j--) {
-                temp = arr[i];
-                arr[i] = arr[j + 1];
+                temp = arr[j];
+                arr[j] = arr[j + 1];
                 arr[j + 1] = temp;
             }
         }
