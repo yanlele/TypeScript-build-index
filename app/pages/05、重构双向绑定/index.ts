@@ -10,7 +10,6 @@ class Index {
         console.log('run');
 
         console.log(Store.getInstance());
-
     }
 }
 
