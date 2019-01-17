@@ -8,7 +8,7 @@
  */
 class Store {
     private static instance: Store;
-    private static mapStore: Map<string, any> = new Map<string, any>();
+    private mapStore: Map<string, any> = new Map<string, any>();
 
     static get _instance(): Store {
         return this.instance;
@@ -19,11 +19,11 @@ class Store {
     }
 
 
-    static get _mapStore(): Map<string, any> {
+    get _mapStore(): Map<string, any> {
         return this.mapStore;
     }
 
-    static set _mapStore(value: Map<string, any>) {
+    set _mapStore(value: Map<string, any>) {
         this.mapStore = value;
     }
 
@@ -35,15 +35,22 @@ class Store {
         return this._instance;
     }
 
-    static setStore(key: string, value: any) {
+    //
+    setStore(key: string, value: any) {
         this._mapStore.set(key, value);
     }
 
-    static getStore(key: string = '') {
+    getStore(key: string = '') {
         if (key) {
             return this._mapStore.get(key);
         }
         return this._mapStore.entries()
+    }
+
+    deleteStore(key: string = '') {
+        if(key) {
+            this._mapStore.delete(key);
+        }
     }
 }
 

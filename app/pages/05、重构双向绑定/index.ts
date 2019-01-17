@@ -8,9 +8,10 @@ import Store from "./Store";
 class Index {
     run() {
         console.log('run');
-        Store.setStore('name', 'yanle');
-        Store.setStore('age', 25);
-        console.log(Store.getStore());
+        Store.getInstance().setStore('name', 'yanle');
+        Store.getInstance().setStore('age', 25);
+        console.log(Store.getInstance().getStore());
+        console.log(Store.getInstance().getStore('age'));
     }
 }
 
