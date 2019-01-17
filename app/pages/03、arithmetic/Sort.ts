@@ -32,10 +32,10 @@ class Sort {
         let middle: number;
         let left: number[] = [];
         let right: number[] = [];
-        middleIndex = Math.floor(arr.length/2);
+        middleIndex = Math.floor(arr.length / 2);
         middle = arr.splice(middleIndex, 1)[0];
-        for (let i : number = 0;i< arr.length;i++) {
-            if(arr[i] < middle) {
+        for (let i: number = 0; i < arr.length; i++) {
+            if (arr[i] < middle) {
                 left.push(arr[i])
             } else {
                 right.push(arr[i])
@@ -60,11 +60,11 @@ class Sort {
         return arr;*/
         let temp: number,
             len: number = arr.length;
-        for(let i : number = 0; i< len - 1;i++) {
-            for (let j: number = 0; j< len -1 -i;j++) {
-                if(arr[j]> arr[j+1]) {
-                    temp = arr[j+1];
-                    arr[j+1] = arr[j];
+        for (let i: number = 0; i < len - 1; i++) {
+            for (let j: number = 0; j < len - 1 - i; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    temp = arr[j + 1];
+                    arr[j + 1] = arr[j];
                     arr[j] = temp;
                 }
             }
@@ -94,11 +94,11 @@ class Sort {
         let minIndex: number,
             temp: number,
             len: number = arr.length;
-        for (let i:  number = 0; i< len -1 ;i++) {
+        for (let i: number = 0; i < len - 1; i++) {
             minIndex = i;
-            for (let j:number = i+1; j< len;j++) {
-                if(arr[minIndex] > arr[j]) {
-                    minIndex = j
+            for (let j: number = i + 1; j < len; j++) {
+                if (arr[minIndex] > arr[j]) {
+                    minIndex = j;
                 }
             }
             temp = arr[i];
