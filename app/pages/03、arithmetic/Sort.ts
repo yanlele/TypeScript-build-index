@@ -151,14 +151,14 @@ class Sort {
         return arr;*/
 
         let len: number = arr.length,
-            gap: number = Math.floor(len / 2),
+            gap: number = Math.floor(len/2),
             temp: number;
-        for (gap; gap > 0; gap = Math.floor(gap / 2)) {
-            for (let i: number = 1; i < len; i++) {
-                for (let j: number = i - gap; j >= 0 && arr[j] > arr[j + gap]; j -= gap) {
+        for (gap; gap>0;gap=Math.floor(gap/2)) {
+            for (let i: number = 1;i< len;i++) {
+                for (let j: number = i - gap; j>=0 && arr[j] > arr[j+gap]; j -= gap) {
                     temp = arr[j];
-                    arr[j] = arr[j + gap];
-                    arr[j + gap] = temp;
+                    arr[j] = arr[j+gap];
+                    arr[j+gap] = temp;
                 }
             }
         }
