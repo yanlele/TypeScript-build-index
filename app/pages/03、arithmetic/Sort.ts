@@ -121,10 +121,9 @@ class Sort {
             }
         }
         return arr;*/
-
-        let len: number = arr.length,
+        let current: number,
             temp: number,
-            current: number;
+            len: number = arr.length;
         for (let i: number = 1; i < len; i++) {
             current = arr[i];
             for (let j: number = i - 1; j >= 0 && arr[j] > current; j--) {
