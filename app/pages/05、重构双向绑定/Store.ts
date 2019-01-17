@@ -51,6 +51,7 @@ class Store {
         if(key) {
             this._mapStore.delete(key);
         }
+        this._mapStore.clear();
     }
 }
 
