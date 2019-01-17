@@ -8,7 +8,7 @@
  */
 class Store {
     private static instance: Store;
-    private static mapStore: Map<string, object|string|string>;
+    private static mapStore: Map<string, any> = new Map<string, any>();
 
     static get _instance(): Store {
         return this.instance;
@@ -18,28 +18,32 @@ class Store {
         this.instance = value;
     }
 
-    static get _mapStore(): Map<string, object | string | string> {
+
+    static get _mapStore(): Map<string, any> {
         return this.mapStore;
     }
 
-    static set _mapStore(value: Map<string, object | string | string>) {
+    static set _mapStore(value: Map<string, any>) {
         this.mapStore = value;
     }
 
     // 获取单例
     static getInstance() {
-        if(!this._instance) {
+        if (!this._instance) {
             this._instance = new Store();
         }
         return this._instance;
     }
 
-    static setStore(key, value) {
+    static setStore(key: string, value: any) {
         this._mapStore.set(key, value);
     }
 
-    static getStore(key) {
-        return this._mapStore.get(key);
+    static getStore(key: string = '') {
+        if (key) {
+            return this._mapStore.get(key);
+        }
+        return this._mapStore.entries()
     }
 }
 
