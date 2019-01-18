@@ -71,7 +71,8 @@ class Compile {
     // 事件绑定
     bindEventHandler(node, attr: Attr) {
         let eventType = attr.name.substr(5);
-        let methodName = attr.name;
+        let methodName = attr.value;
+        console.log(methodName);
         node.addEventListener(eventType, this.vm.$methods[methodName]);
     }
 
