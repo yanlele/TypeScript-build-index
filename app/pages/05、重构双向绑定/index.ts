@@ -4,7 +4,7 @@
  */
 import Store from "./Store";
 
-let observe: (data:object) =>any = function(data: object) {
+let observe: (data: object)=>any = function(data: object) {
 
 };
 
