@@ -8,8 +8,6 @@ import Store from "./Store";
 import Subject from "./Subject";
 import Mvvm from "./Mvvm";
 
-
-
 class Index {
     private observe: (data: object) => any;
     run() {
