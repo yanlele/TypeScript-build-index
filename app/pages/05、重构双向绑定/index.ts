@@ -30,3 +30,10 @@ let vm = new Mvvm({
         }
     }
 });
+
+let timer = setInterval(function () {
+    vm._$data.age++;
+    if(vm._$data.age >=10) {
+        clearInterval(timer)
+    }
+}, 1000);

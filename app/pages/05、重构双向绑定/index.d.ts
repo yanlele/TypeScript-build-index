@@ -6,6 +6,6 @@
 
 export interface IMvvmOpts {
     el: any;
-    data: object;
-    methods: object;
+    data: any;
+    methods: any;
 }

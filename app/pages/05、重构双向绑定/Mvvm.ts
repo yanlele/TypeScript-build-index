@@ -34,15 +34,14 @@ let observe: (data: object)=>any = function(data: object) {
 };
 
 class Mvvm {
-    private $data: object = {};
-    private $methods: object = {};
+    private $data: any = {};
+    private $methods: any = {};
     private $el: HTMLElement;
     constructor(opts: types.IMvvmOpts) {
         // 默认存储对象
         Store.getInstance().setStore('id', 0);
         Store.getInstance().setStore('currentObserver', null);
         Store.getInstance().setStore('observe', observe);
-
 
         this.init(opts);
         Store.getInstance().getStore('observe')(this.$data);
@@ -75,6 +74,23 @@ class Mvvm {
         for (let key in this.$methods) {
             this.$methods[key] = this.$methods[key].bind(this);
         }
+    }
+
+
+    get _$data(): any {
+        return this.$data;
+    }
+
+    set _$data(value: any) {
+        this.$data = value;
+    }
+
+    get _$methods(): any {
+        return this.$methods;
+    }
+
+    set _$methods(value: any) {
+        this.$methods = value;
     }
 }
 
