@@ -133,7 +133,6 @@ class Compile {
         let reg = /{{(.+?)}}/g;
         let match;
         while (match = reg.exec(node.nodeValue)) {      //获取到文本内容
-            console.log(match[1]);
             let raw = match[0];
             let key = match[1].trim();
             node.nodeValue = node.nodeValue.replace(raw, this.vm.$data[key]);

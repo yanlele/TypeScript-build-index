@@ -28,7 +28,3 @@ let vm = new Mvvm({
         }
     }
 });
-
-
-let index = new Index();
-index.run();
