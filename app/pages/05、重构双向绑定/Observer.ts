@@ -11,7 +11,8 @@ class Observer {
     private vm: any;
     private cb: Function;
     private value: any;
-    constructor(key: string, vm:any , cb: Function) {
+
+    constructor(key: string, vm: any, cb: Function) {
         this.key = key;
         this.vm = vm;
         this.cb = cb;
@@ -28,13 +29,14 @@ class Observer {
     update() {
         let oldValue: any = this.value;
         let value = this.getValue();
-        if(oldValue !== value){
+        if (oldValue !== value) {
             this.value = value;
             this.cb.bind(this.vm)(value, oldValue);
         }
     }
-        subscribeTo(subject: Subject) {
-        if(!this.subjects[subject._id]) {
+
+    subscribeTo(subject: Subject) {
+        if (!this.subjects[subject._id]) {
             subject.addObserver(this);
             this.subjects[subject._id] = subject;
         }

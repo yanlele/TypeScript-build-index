@@ -133,8 +133,9 @@ class Compile {
         let reg = /{{(.+?)}}/g;
         let match;
         while (match = reg.exec(node.nodeValue)) {      //获取到文本内容
-            let raw = match[0]
-            let key = match[1].trim()
+            console.log(match[1]);
+            let raw = match[0];
+            let key = match[1].trim();
             node.nodeValue = node.nodeValue.replace(raw, this.vm.$data[key]);
             new Observer(this.vm, key, function (val, oldVal) {     // 订阅者核心方法
                 node.nodeValue = node.nodeValue.replace(oldVal, val)
