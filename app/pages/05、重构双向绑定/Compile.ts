@@ -34,7 +34,7 @@ class Compile {
         let match;
         while (match = reg.exec(node.nodeValue)) {
             let raw: string = match[0];
-            let key: string = match[1].trim();
+            let key: string = match[1];
             node.nodeValue = node.nodeValue.replace(raw, this.vm.$data[key]);           // 页面渲染的时候就直接触发
 
             // 这个是用于页面数据监听的时候触发

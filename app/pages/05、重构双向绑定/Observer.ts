@@ -12,7 +12,7 @@ class Observer {
     private cb: Function;
     private value: any;
 
-    constructor(key: string, vm: any, cb: Function) {
+    constructor( vm: any, key: string, cb: Function) {
         this.key = key;
         this.vm = vm;
         this.cb = cb;

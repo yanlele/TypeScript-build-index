@@ -5,7 +5,7 @@
 
 class Subject {
     private id: number = 0;
-    private observers: any[];
+    private observers: any[] = [];
     constructor() {
         this.id++;
     }
