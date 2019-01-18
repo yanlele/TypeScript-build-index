@@ -2,6 +2,8 @@
  * create by yanle
  * create time 2019/1/17 11:48 PM
  */
+
+import './index.less';
 import Store from "./Store";
 import Subject from "./Subject";
 import Mvvm from "./Mvvm";

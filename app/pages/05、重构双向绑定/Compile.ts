@@ -30,7 +30,7 @@ class Compile {
 
     // 文本编译
     compileText(node: HTMLElement) {
-        let reg: RegExp = /{{.+?}}/g;
+        let reg: RegExp = /{{(.+?)}}/g;
         let match;
         while (match = reg.exec(node.nodeValue)) {
             let raw: string = match[0];
