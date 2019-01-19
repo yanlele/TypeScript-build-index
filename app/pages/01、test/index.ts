@@ -17,3 +17,12 @@ import Store from './Store';
 
 
 Store.getInstance()._id;
+
+let helloTemplate = require('../../components/template/hello.hbs');
+let helloTemplateComponent = helloTemplate({
+    name: 'yanle',
+    a: 1,
+    b: 2
+});
+
+document.getElementById('container').innerHTML = helloTemplateComponent;

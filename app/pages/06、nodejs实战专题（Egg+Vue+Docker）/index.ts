@@ -12,10 +12,9 @@ import AsyncBase from '../../components/06、nodejs实战专题（Egg+Vue+Docker
 class Main {
     private dom: any;
 
-
-
     constructor() {
         this.dom = {
+            container: Main.getElementID('container'),
             class0201: Main.getElementID('class02-01')
         }
     }
@@ -32,7 +31,6 @@ class Main {
     static register(dom:HTMLElement, event) {
         dom.addEventListener('click', event);
     }
-
 
     // 第二章节的内容
     two() {

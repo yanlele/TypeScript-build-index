@@ -5,5 +5,4 @@
  */
 
 import './style.less';
-
-console.log('common');
+import '../lib/handlebars-helper-extend/helper';
