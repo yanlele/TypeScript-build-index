@@ -7,7 +7,7 @@
 /*事件实现异步*/
 // 第一种写法
 
-import {Evente} from '../../components/06、nodejs实战专题（Egg+Vue+Docker）/02章、Egg核心原理/01、异步基础';
+import {Evente, ChainEvente} from '../../components/06、nodejs实战专题（Egg+Vue+Docker）/02章、Egg核心原理/01、异步基础';
 
 class Main {
     private dom: any;
@@ -34,7 +34,8 @@ class Main {
 
     // 第二章节的内容
     two() {
-        let evente: Evente = new Evente();
+        // let evente: Evente = new Evente();
+        let evente: ChainEvente = new ChainEvente();
         Main.register(this.dom.class0201, evente.run);
     }
 }

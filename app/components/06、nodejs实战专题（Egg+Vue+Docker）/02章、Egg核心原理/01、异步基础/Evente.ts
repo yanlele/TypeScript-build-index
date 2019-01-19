@@ -12,9 +12,10 @@ class Evente {
 
     add(key: string, fun: Function) {
         if(this.map[key]) {
-            this.map[key].push(fun)
+            this.map[key].push(fun);
+            return;
         }
-        this.map[key] = [fun]
+        this.map[key] = [fun];
     }
 
     emit(key: string, ...args) {
@@ -30,8 +31,9 @@ class Evente {
         e.add('hello', (err, name) => {
             if(err) {
                 console.log(err);
+            } else {
+                console.log(name);
             }
-            console.log(name);
         });
         e.emit('hello', '发生错误');
         e.emit('hello', null, 'hello nodejs');
