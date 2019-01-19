@@ -5,8 +5,9 @@
  */
 
 import Main from './Main';
-require('./index.less');
+import './index.less';
 import Store from './Store';
+let helloTemplate = require('../../components/template/hello.hbs');
 
 
 // console.log(123);
@@ -18,7 +19,7 @@ import Store from './Store';
 
 Store.getInstance()._id;
 
-let helloTemplate = require('../../components/template/hello.hbs');
+
 let helloTemplateComponent = helloTemplate({
     name: 'yanle',
     a: 1,
