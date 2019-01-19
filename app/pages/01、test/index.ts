@@ -16,4 +16,4 @@ import Store from './Store';
 // console.log(main._age);
 
 
-Store.getInstance()._id
+Store.getInstance()._id;
