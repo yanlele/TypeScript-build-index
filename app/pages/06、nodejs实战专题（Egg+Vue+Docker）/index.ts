@@ -6,33 +6,36 @@
 
 /*事件实现异步*/
 // 第一种写法
-class Evente {
-    private map: any;
+
+import AsyncBase from '../../components/06、nodejs实战专题（Egg+Vue+Docker）/02章、Egg核心原理/01、异步基础/AsyncBase';
+
+class Main {
+    private dom: any;
+
+
+
     constructor() {
-        this.map = {}
+        this.dom = {
+            class0201: Main.getElementID('class02-01')
+        }
     }
 
-    add(key: string, fun: Function) {
-        if(this.map[key]) {
-            this.map[key].push(fun)
-        }
-        this.map[key] = [fun]
+    static getElementID(id) {
+        return document.getElementById(id);
     }
 
-    emit(key: string, ...args) {
-        if(this.map[key]) {
-            this.map[key].map(function (fun) {
-                fun(...args);
-            })
-        }
+    init() {
+
+    }
+
+    static register(dom:HTMLElement, event) {
+        dom.addEventListener('click', event);
+    }
+
+    static two() {
+        let asyncBase: AsyncBase = new AsyncBase();
     }
 }
-let e: Evente = new Evente();
-e.add('hello', (err, name) => {
-   if(err) {
-       console.log(err);
-   }
-   console.log(name);
-});
-e.emit('hello', '发生错误');
-e.emit('hello', null, 'hello nodejs');
+
+Main.two();
+
