@@ -24,18 +24,22 @@ class Main {
         return document.getElementById(id);
     }
 
-    init() {
-
+    static init() {
+        let main = new Main();
+        main.two();         // 注册第二章节的事件
     }
 
     static register(dom:HTMLElement, event) {
         dom.addEventListener('click', event);
     }
 
-    static two() {
+
+    // 第二章节的内容
+    two() {
         let asyncBase: AsyncBase = new AsyncBase();
+        Main.register(this.dom.class0201, asyncBase.run);
     }
 }
 
-Main.two();
+Main.init();
 

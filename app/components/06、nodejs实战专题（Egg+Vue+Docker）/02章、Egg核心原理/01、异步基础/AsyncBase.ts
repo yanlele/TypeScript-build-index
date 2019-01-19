@@ -24,15 +24,18 @@ class Evente {
             })
         }
     }
-}
-let e: Evente = new Evente();
-e.add('hello', (err, name) => {
-    if(err) {
-        console.log(err);
+
+    run() {
+        let e: Evente = new Evente();
+        e.add('hello', (err, name) => {
+            if(err) {
+                console.log(err);
+            }
+            console.log(name);
+        });
+        e.emit('hello', '发生错误');
+        e.emit('hello', null, 'hello nodejs');
     }
-    console.log(name);
-});
-e.emit('hello', '发生错误');
-e.emit('hello', null, 'hello nodejs');
+}
 
 export default Evente;
