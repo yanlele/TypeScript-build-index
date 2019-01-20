@@ -9,16 +9,7 @@ import './index.less';
 import Store from './Store';
 let helloTemplate = require('../../components/template/hello.hbs');
 
-
-// console.log(123);
-// let main = new Main();
-// main.run();
-//
-// console.log(main._age);
-
-
 Store.getInstance()._id;
-
 
 let helloTemplateComponent = helloTemplate({
     name: 'yanle',
