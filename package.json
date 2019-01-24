@@ -6,8 +6,9 @@
   "scripts": {
     "build": "webpack",
     "dev": "webpack -w --config webpack.config.dev.js",
-    "test": "webpack --config webpack.config.test.js",
-    "server": "live-server dist"
+    "test-webpack": "webpack --config webpack.config.test.js",
+    "server": "live-server dist",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -40,6 +41,7 @@
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
     "img-loader": "^3.0.1",
+    "jest": "^23.6.0",
     "less": "^3.8.1",
     "less-loader": "^4.1.0",
     "live-server": "^1.2.1",
