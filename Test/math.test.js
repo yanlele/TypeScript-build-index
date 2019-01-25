@@ -5,7 +5,6 @@
  */
 
 import {sqrt} from './math';
-
 describe('main', function () {
     test('4的平方根等于2', function () {
         expect(sqrt(4)).toBe(2)
