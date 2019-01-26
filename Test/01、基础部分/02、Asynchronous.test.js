@@ -38,6 +38,25 @@ describe('Asynchronous', function () {
             });
         };
 
-        returnPromise();
+        // 这种方式并不能非常好的拒绝测试， 因为还是会放过测试用例
+        return returnPromise()
+            .then(flag => {
+                expect(flag).toBeFalsy();
+            })
+    });
+
+
+    test('Promise testing used .resolves and .rejects', function () {
+        let timer = +new Date();
+        let flag = timer % 2 === 1 ? true : false;
+        let returnPromise = function () {
+            return new Promise((resolve, reject) => {
+                if (flag) {
+                    resolve(flag)
+                } else {
+                    reject(flag)
+                }
+            });
+        };
     })
 });
