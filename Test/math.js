@@ -12,3 +12,8 @@ export function sqrt(x) {
 export function add(a, b) {
     return a + b;
 }
+
+// function test(a, b) {
+//     return a % b;
+// }
+// console.log(test(+new Date(),2));
