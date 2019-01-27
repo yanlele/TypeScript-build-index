@@ -58,7 +58,6 @@ describe('Asynchronous', function () {
             });
         };
 
-        // 这种方式并不能非常好的拒绝测试， 因为还是会放过测试用例
         return returnPromise()
             .catch(flag => {
                 expect.assertions(1);
@@ -78,5 +77,8 @@ describe('Asynchronous', function () {
                 }
             });
         };
-    })
+        return expect(returnPromise()).resolves.toBeTruthy();
+    });
+
+
 });
