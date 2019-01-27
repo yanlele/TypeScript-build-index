@@ -80,5 +80,19 @@ describe('Asynchronous', function () {
         return expect(returnPromise()).resolves.toBeTruthy();
     });
 
-
+    test('async/await testing', async function () {
+        let timer = +new Date();
+        let flag = timer % 2 === 1 ? true : false;
+        let returnPromise = function () {
+            return new Promise((resolve, reject) => {
+                if (flag) {
+                    resolve(flag)
+                } else {
+                    reject(flag)
+                }
+            });
+        };
+        let result = await returnPromise();
+        expect(result).toBeTruthy();
+    });
 });
