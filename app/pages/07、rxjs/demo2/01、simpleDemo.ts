@@ -94,7 +94,20 @@ class SimpleDemo {
         )
     }
 
+    static observeUnsubscribe() {
+        const source$: Observable<any> = new Observable( observe => {
+            let number = 0;
+            setInterval(()=> {
+                observe.next(number++)
+            }, 1000);
+        });
 
+        const subscribe = source$.subscribe(
+            item=>console.log(item)
+        );
+
+        setTimeout(subscribe.unsubscribe, 5000)
+    }
 }
 
 export default SimpleDemo;
