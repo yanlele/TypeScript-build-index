@@ -1,5 +1,6 @@
 import {fromEvent, Observable} from 'rxjs'
 import {take} from 'rxjs/operators';
+import {observableToBeFn} from "rxjs/internal/testing/TestScheduler";
 
 
 class SimpleDemo {
@@ -60,6 +61,39 @@ class SimpleDemo {
         source$.subscribe(observer);
         console.log('end');
     }
+
+    static observeComplete() {
+        const source$: Observable<any> = new Observable(observe=> {
+            observe.next(1);
+            observe.next(2);
+            observe.complete();
+            observe.next(3)
+        });
+
+        const observe = {
+            next: next=> console.log(next),
+            complete: ()=> console.log('complete'),
+            error: (e) => console.log('e')
+        };
+
+        source$.subscribe(observe)
+    }
+
+    static observeError() {
+        const source$: Observable<any> = new Observable(observe=> {
+            observe.next(1);
+            observe.next(2);
+            throw new Error('error');
+            observe.next(3);
+            observe.complete();
+        });
+        source$.subscribe(
+            item => console.log(item),
+            e=>console.log(e.message),
+            ()=> console.log('complete'),
+        )
+    }
+
 
 }
 
