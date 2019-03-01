@@ -1,4 +1,4 @@
-import {Observable, of} from 'rxjs'
+import {Observable, of, fromEventPattern} from 'rxjs'
 
 class ObservableClass {
     static simple() {
