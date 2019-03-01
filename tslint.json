@@ -22,7 +22,9 @@
     "semicolon": [true, "always", "ignore-bound-class-methods"],
     "no-trailing-whitespace": [true, "ignore-blank-lines"],
     "align": false,
-    "array-type": [true, "array"]
+    "array-type": [true, "array"],
+    "object-curly-spacing": false,
+    "ordered-imports": false
   },
   "rulesDirectory": []
 }
