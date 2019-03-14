@@ -1,5 +1,7 @@
 import fetch from '../util/fetch';
+import events from '../util/events';
 
+// jest.mock('../util/fetch.js');
 describe('mock.fn', () => {
     test('测试jest.fn()调用', () => {
         let mockFn = jest.fn();
@@ -48,4 +50,11 @@ describe('mock.fn', () => {
         // 断言是否调用
         expect(mockFn).toBeCalled();
     }, 5000);
+
+    test('mock 整个 fetch.js模块', async () => {
+        expect.assertions(2);
+        await events.getPostList();
+        expect(fetch.fetchPostsList).toHaveBeenCalled();
+        expect(fetch.fetchPostsList).toHaveBeenCalledTimes(1);
+    }, 10000);
 });
