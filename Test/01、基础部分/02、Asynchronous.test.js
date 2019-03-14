@@ -27,7 +27,7 @@ describe('Asynchronous', function () {
 
     test('Promise testing resolve', function () {
         let timer = +new Date();
-        let flag = timer % 2 === 1 ? true : false;
+        let flag = timer % 2 === 1;
         let returnPromise = function () {
             return new Promise((resolve, reject) => {
                 if (flag) {

@@ -12,11 +12,11 @@ describe('Setup and Teardown', function () {
         console.log('afterEach')
     });
 
-    test('match string one', function () {
+    it('match string one', function () {
         expect('yanlele').toMatch('yan');
     });
 
-    test('match string two', function () {
+    it('match string two', function () {
         expect('yanlele').toMatch('lele');
     })
 });

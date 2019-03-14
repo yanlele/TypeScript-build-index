@@ -1,3 +1,5 @@
+import fetch from '../util/fetch';
+
 describe('mock.fn', () => {
     test('测试jest.fn()调用', () => {
         let mockFn = jest.fn();
@@ -37,4 +39,13 @@ describe('mock.fn', () => {
         // 断言mockFn调用后返回的是Promise对象
         expect(Object.prototype.toString.call(mockFn())).toBe("[object Promise]");
     });
+
+    it('fetchPostList中回调函数应该别调用', async () => {
+        expect.assertions(1);
+        let mockFn = jest.fn();
+        await fetch.fetchPostsList(mockFn);
+
+        // 断言是否调用
+        expect(mockFn).toBeCalled();
+    }, 5000);
 });
